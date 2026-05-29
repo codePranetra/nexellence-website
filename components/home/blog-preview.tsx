@@ -1,13 +1,17 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { BLOG_POSTS } from "@/lib/constants";
 import { SectionHeading } from "@/components/shared/section-heading";
+import { getPublishedBlogs } from "@/lib/blog-queries";
+import { formatBlogDate } from "@/lib/format-date";
 
-export function BlogPreview() {
-  const posts = BLOG_POSTS.slice(0, 3);
+const FALLBACK_IMAGE =
+  "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80";
+
+export async function BlogPreview() {
+  const posts = (await getPublishedBlogs({ limit: 3 })).slice(0, 3);
+
+  if (posts.length === 0) return null;
 
   return (
     <section className="section-padding section-y bg-[#0a0a0a]">
@@ -31,8 +35,8 @@ export function BlogPreview() {
             >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
-                  src={post.image}
-                  alt={post.title}
+                  src={post.thumbnail_image || FALLBACK_IMAGE}
+                  alt={post.thumbnail_alt_text || post.title}
                   fill
                   className="object-cover transition duration-500 group-hover:scale-105"
                   sizes="400px"
@@ -40,13 +44,17 @@ export function BlogPreview() {
               </div>
               <div className="p-6">
                 <span className="text-xs font-medium uppercase tracking-wider text-brand-orange">
-                  {post.category}
+                  {post.category.name}
                 </span>
                 <h3 className="mt-2 font-sans text-lg font-bold text-white group-hover:text-brand-orange">
                   {post.title}
                 </h3>
-                <p className="mt-2 line-clamp-2 text-sm text-white/55">{post.excerpt}</p>
-                <p className="mt-4 text-xs text-white/40">{post.date}</p>
+                <p className="mt-2 line-clamp-2 text-sm text-white/55">
+                  {post.short_description}
+                </p>
+                <p className="mt-4 text-xs text-white/40">
+                  {formatBlogDate(post.published_at ?? post.created_at)}
+                </p>
               </div>
             </Link>
           ))}

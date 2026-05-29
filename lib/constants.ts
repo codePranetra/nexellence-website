@@ -265,42 +265,6 @@ export const VALUES = [
   { title: "Impact", description: "Hires that drive measurable business outcomes for our clients." },
 ];
 
-export const BLOG_POSTS = [
-  {
-    slug: "advanced-rpo-solutions-solving-hiring-gaps",
-    title: "How Advanced RPO Solutions Are Solving Modern Hiring Gaps",
-    excerpt:
-      "The hiring landscape has changed significantly in recent years, making recruitment more challenging for businesses across different industries.",
-    category: "Blog",
-    date: "May 25, 2026",
-    readTime: "6 min",
-    featured: true,
-    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=80",
-  },
-  {
-    slug: "enterprise-growth-smarter-rpo-models",
-    title: "Why Enterprise Growth Now Depends on Smarter RPO Models",
-    excerpt:
-      "Business expansion is driven by speed, adaptability, and access to exceptional professionals. Traditional recruitment structures are no longer enough.",
-    category: "Blog",
-    date: "May 20, 2026",
-    readTime: "7 min",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80",
-  },
-  {
-    slug: "strategic-rpo-shift-modern-businesses",
-    title: "The Strategic RPO Shift Modern Businesses Can't Ignore",
-    excerpt:
-      "Hiring today is no longer just an HR function—it has become a major business decision that directly impacts growth and productivity.",
-    category: "Blog",
-    date: "May 20, 2026",
-    readTime: "5 min",
-    featured: false,
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-  },
-];
-
 export const TESTIMONIALS = [
   {
     id: "nina-r",
