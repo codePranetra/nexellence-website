@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Login {
+  id           Int      @id @default(autoincrement())
+  name         String   @db.VarChar(100)
+  email        String   @unique @db.VarChar(255)
+  hashPassword String   @map("hash_password") @db.VarChar(255)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  blogsCreated Blog[] @relation("BlogCreatedBy")
+  blogsUpdated Blog[] @relation("BlogUpdatedBy")
+
+  @@map("login")
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(100)
+  slug      String   @unique @db.VarChar(120)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  blogs Blog[]
+
+  @@map("categories")
+}
+
+model Blog {
+  id               Int       @id @default(autoincrement())
+  slug             String    @unique @db.VarChar(255)
+  title            String    @db.VarChar(255)
+  shortDescription String?   @map("short_description") @db.Text
+  description      String?   @db.Text
+  content          String    @db.LongText
+  thumbnailImage   String?   @map("thumbnail_image") @db.VarChar(500)
+  thumbnailAltText String?   @map("thumbnail_alt_text") @db.VarChar(255)
+  bannerImage      String?   @map("banner_image") @db.VarChar(500)
+  bannerText       String?   @map("banner_text") @db.VarChar(500)
+  categoryId       Int       @map("category_id")
+  isPublished      Boolean   @default(false) @map("is_published")
+  publishedAt      DateTime? @map("published_at")
+  createdById      Int       @map("created_by_id")
+  updatedById      Int?      @map("updated_by_id")
+  createdAt        DateTime  @default(now()) @map("created_at")
+  updatedAt        DateTime  @updatedAt @map("updated_at")
+
+  category  Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  createdBy Login    @relation("BlogCreatedBy", fields: [createdById], references: [id], onDelete: Restrict)
+  updatedBy Login?   @relation("BlogUpdatedBy", fields: [updatedById], references: [id], onDelete: SetNull)
+
+  @@map("blogs")
+}

@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Clock } from "lucide-react";
 
 interface Post {
   slug: string;
@@ -12,8 +11,8 @@ interface Post {
   excerpt: string;
   category: string;
   date: string;
-  readTime: string;
   image: string;
+  imageAlt?: string;
 }
 
 export function BlogClient({ posts }: { posts: Post[] }) {
@@ -55,7 +54,7 @@ export function BlogClient({ posts }: { posts: Post[] }) {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                   <Image
                     src={post.image}
-                    alt={post.title}
+                    alt={post.imageAlt || post.title}
                     fill
                     className="object-cover transition duration-500 group-hover:scale-105"
                     sizes="400px"
@@ -70,12 +69,11 @@ export function BlogClient({ posts }: { posts: Post[] }) {
                 <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
                   {post.excerpt}
                 </p>
-                <div className="mt-3 flex items-center gap-3 text-xs text-muted-foreground">
-                  <span>{post.date}</span>
-                  <span className="flex items-center gap-1">
-                    <Clock className="h-3 w-3" /> {post.readTime}
-                  </span>
-                </div>
+                {post.date && (
+                  <div className="mt-3 flex items-center gap-3 text-xs text-muted-foreground">
+                    <span>{post.date}</span>
+                  </div>
+                )}
               </Link>
             </motion.article>
           ))}
