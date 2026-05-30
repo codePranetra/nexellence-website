@@ -14,7 +14,7 @@ export function CTASection() {
             Ready to grow your placement rate?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-white/60">
-            We handle the backend—you focus on business. Partner with Nexellence for RPO support
+            We handle the backend you focus on business. Partner with Nexellence for RPO support
             that scales with your agency.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">

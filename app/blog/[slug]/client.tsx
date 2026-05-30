@@ -10,7 +10,7 @@ export function BlogArticleClient({ title }: { title: string }) {
   const scaleX = useSpring(progress, { stiffness: 400, damping: 40 });
 
   useEffect(() => {
-    document.title = `${title} | Code Pranetra`;
+    document.title = `${title} | Nexellence`;
   }, [title]);
 
   useEffect(() => {

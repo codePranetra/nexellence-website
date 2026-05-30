@@ -99,6 +99,25 @@
     @apply py-20 md:py-28 lg:py-32;
   }
 
+  .blog-content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .blog-content h2,
+  .blog-content h3 {
+    @apply font-sans font-bold text-white;
+  }
+
+  .blog-content p,
+  .blog-content li {
+    max-width: none;
+  }
+
+  .blog-content a {
+    @apply text-brand-orange underline-offset-4 hover:text-brand-orange-light hover:underline;
+  }
+
   @keyframes footer-brand-glow-pulse {
     0%,
     100% {

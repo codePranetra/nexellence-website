@@ -3,7 +3,7 @@ export const SITE = {
   logo: "/images/Nexellence-logo.png",
   tagline: "Excellence in Talent. Precision in Placement.",
   description:
-    "We help you find and screen qualified talent that clients want—and our RPO professionals deliver it very well for less.",
+    "We help you find and screen qualified talent that clients want and our RPO professionals deliver it very well for less.",
   url: "https://www.nexellence.net",
   bookingUrl:
     "https://cal.com/nexellence-meeting/nexellence-meeting?overlayCalendar=true",
@@ -33,7 +33,7 @@ export const WHO_WE_ARE = {
 export const HOW_WE_DELIVER = {
   title: "How We Deliver",
   paragraphs: [
-    "Our multi-layered team structure guarantees quality, speed, and accountability at every stage of the process. With an impressive employee retention rate many of our team members have been with us for over four years—we take pride in a culture that values growth, loyalty, and excellence. Happy employees mean better results for our clients.",
+    "Our multi-layered team structure guarantees quality, speed, and accountability at every stage of the process. With an impressive employee retention rate many of our team members have been with us for over four years we take pride in a culture that values growth, loyalty, and excellence. Happy employees mean better results for our clients.",
     "We believe in continuous learning and innovation. Our team receives ongoing training in emerging tools, market mapping, automation, ATS platforms, and sourcing strategies, ensuring that we always stay a step ahead in a fast-evolving recruitment landscape.",
     "At Nexellence, we are not just a service provider. We are your strategic partner, an extended part of your team, driven to accelerate your hiring process, enhance productivity, and empower your growth with every placement we support.",
   ],
@@ -116,7 +116,7 @@ export const FOOTER_SERVICES = [
 ];
 
 export const FOOTER_MISSION =
-  "We believe that over the next few years, Nexellence really will be the partner of choice—from our exceptional customer care to quality service for a vast array of businesses. Providing further growth and trust amongst our clients is prevalent amongst our team, and dedication to only provide the best for all our consumers is key.";
+  "We believe that over the next few years, Nexellence really will be the partner of choice from our exceptional customer care to quality service for a vast array of businesses. Providing further growth and trust amongst our clients is prevalent amongst our team, and dedication to only provide the best for all our consumers is key.";
 
 export const FOOTER_WHAT_WE_DO_EXTRA =
   "Our VA will take care of anything, right from sourcing candidates, managing database, finding contact details, getting more clients, job postings and many more.";
