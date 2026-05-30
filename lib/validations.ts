@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 export const loginSchema = z.object({
-  id: z.coerce.number().int().positive(),
-  password: z.string().min(1),
+  identifier: z.string().min(1, "Email or username is required"),
+  password: z.string().min(1, "Password is required"),
 });
 
 export const categoryCreateSchema = z.object({

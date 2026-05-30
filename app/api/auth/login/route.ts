@@ -7,10 +7,13 @@ export async function POST(request: Request) {
     const body = await request.json();
     const parsed = loginSchema.safeParse(body);
     if (!parsed.success) {
-      return jsonError("Invalid id or password", 400);
+      return jsonError("Invalid email/username or password", 400);
     }
 
-    const admin = await authenticateAdmin(parsed.data.id, parsed.data.password);
+    const admin = await authenticateAdmin(
+      parsed.data.identifier,
+      parsed.data.password
+    );
     if (!admin) {
       return jsonError("Invalid credentials", 401);
     }

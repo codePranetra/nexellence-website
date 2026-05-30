@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [id, setId] = useState("1");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,7 @@ function LoginForm() {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: Number(id), password }),
+        body: JSON.stringify({ identifier: identifier.trim(), password }),
       });
       const json = await res.json();
       if (!res.ok || !json.success) {
@@ -43,7 +43,9 @@ function LoginForm() {
         className="w-full max-w-md rounded-2xl border border-white/10 bg-[#111] p-8"
       >
         <h1 className="text-2xl font-bold text-white">Admin Login</h1>
-        <p className="mt-2 text-sm text-white/50">Sign in with your admin ID and password.</p>
+        <p className="mt-2 text-sm text-white/50">
+          Sign in with your email or username and password.
+        </p>
 
         {error && (
           <p className="mt-4 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">
@@ -52,13 +54,14 @@ function LoginForm() {
         )}
 
         <label className="mt-6 block space-y-1.5">
-          <span className="text-sm text-white/70">Admin ID</span>
+          <span className="text-sm text-white/70">Email or username</span>
           <input
-            type="number"
+            type="text"
             required
-            min={1}
-            value={id}
-            onChange={(e) => setId(e.target.value)}
+            autoComplete="username"
+            value={identifier}
+            onChange={(e) => setIdentifier(e.target.value)}
+            placeholder="admin@nexellence.net or Admin"
             className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-white outline-none focus:border-brand-orange/50"
           />
         </label>
@@ -68,6 +71,7 @@ function LoginForm() {
           <input
             type="password"
             required
+            autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-white outline-none focus:border-brand-orange/50"

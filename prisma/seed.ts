@@ -92,7 +92,9 @@ async function main() {
   }
 
   console.log("Seed complete.");
-  console.log(`Admin login — id: ${adminId}, password: (from ADMIN_PASSWORD env)`);
+  console.log(
+    `Admin login — email: ${adminEmail}, username: ${adminName}, password: (from ADMIN_PASSWORD env)`
+  );
 }
 
 main()

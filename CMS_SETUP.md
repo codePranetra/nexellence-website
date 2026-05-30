@@ -23,7 +23,8 @@ npm run dev          # http://localhost:3000
 
 | Field | Default (after seed) |
 |-------|----------------------|
-| Admin ID | `1` |
+| Email | `admin@nexellence.net` |
+| Username | `Admin` (same as `ADMIN_NAME` in `.env`) |
 | Password | `admin123` (from `ADMIN_PASSWORD` in `.env`) |
 
 **URL:** http://localhost:3000/admin/login

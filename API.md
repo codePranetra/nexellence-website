@@ -34,14 +34,14 @@ For Postman: enable **Cookies** → login first → cookie is sent automatically
 
 ```json
 {
-  "id": 1,
+  "identifier": "admin@nexellence.net",
   "password": "admin123"
 }
 ```
 
 | Field | Type | Required |
 |-------|------|----------|
-| id | number | yes |
+| identifier | string | yes — admin **email** or **name** (username) |
 | password | string | yes |
 
 **Success `200`:**
@@ -459,7 +459,7 @@ Full image URL example: `http://localhost:3000/uploads/blogs/3f2a1b4c-....jpg`
 
 ## Postman testing order
 
-1. `POST /api/auth/login` with `{ "id": 1, "password": "admin123" }`
+1. `POST /api/auth/login` with `{ "identifier": "admin@nexellence.net", "password": "admin123" }`
 2. `GET /api/auth/me` (verify cookie)
 3. Public: `GET /api/categories`, `GET /api/blogs`, `GET /api/blogs/{slug}`
 4. Admin: categories CRUD → upload → blogs CRUD
@@ -471,7 +471,8 @@ Full image URL example: `http://localhost:3000/uploads/blogs/3f2a1b4c-....jpg`
 
 | Field | Value |
 |-------|-------|
-| Admin ID | `1` |
+| Email | `admin@nexellence.net` |
+| Username (name) | `Admin` |
 | Password | `admin123` (or `ADMIN_PASSWORD` in `.env`) |
 
 ---
