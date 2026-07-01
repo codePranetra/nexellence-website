@@ -73,8 +73,13 @@ export async function clearSessionCookie() {
   cookieStore.delete(COOKIE_NAME);
 }
 
-export async function authenticateAdmin(id: number, password: string) {
-  const admin = await prisma.login.findUnique({ where: { id } });
+export async function authenticateAdmin(identifier: string, password: string) {
+  const trimmed = identifier.trim();
+  const admin = await prisma.login.findFirst({
+    where: {
+      OR: [{ email: trimmed }, { name: trimmed }],
+    },
+  });
   if (!admin) return null;
   const valid = await verifyPassword(password, admin.hashPassword);
   if (!valid) return null;
