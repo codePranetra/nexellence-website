@@ -30,3 +30,31 @@ export const blogBodySchema = z.object({
 });
 
 export type BlogBodyInput = z.infer<typeof blogBodySchema>;
+
+const serviceIdEnum = z.enum([
+  "candidate-sourcing",
+  "contact-details",
+  "outreach",
+  "crm-ats",
+  "pre-screening",
+  "business-development",
+]);
+
+export const pricingDraftSchema = z.object({
+  email: z.string().email("Please enter a valid email address"),
+  inquiryId: z.coerce.number().int().positive().optional(),
+});
+
+export const pricingInquirySchema = z.object({
+  inquiryId: z.coerce.number().int().positive(),
+  email: z.string().email(),
+  services: z.array(serviceIdEnum).min(1, "Select at least one service"),
+  weeklyHours: z.union([z.literal(20), z.literal(30), z.literal(40)]),
+  durationType: z.enum(["short", "long"]),
+  months: z.coerce.number().int().min(1).max(120),
+  skillLevel: z.enum(["fresher", "intermediate", "expert"]),
+  message: z.string().max(5000).optional().nullable(),
+});
+
+export type PricingDraftInput = z.infer<typeof pricingDraftSchema>;
+export type PricingInquiryInput = z.infer<typeof pricingInquirySchema>;

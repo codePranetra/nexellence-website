@@ -58,3 +58,24 @@ model Blog {
 
   @@map("blogs")
 }
+
+model TaasInquiry {
+  id            Int      @id @default(autoincrement())
+  email         String   @db.VarChar(255)
+  services      Json?
+  weeklyHours   Int?     @map("weekly_hours")
+  durationType  String?  @map("duration_type") @db.VarChar(20)
+  months        Int?
+  skillLevel    String?  @map("skill_level") @db.VarChar(20)
+  message       String?  @db.Text
+  lineItems     Json?    @map("line_items")
+  discountCents Int      @default(0) @map("discount_cents")
+  totalCents    Int?     @map("total_cents")
+  status        String   @default("draft") @db.VarChar(20)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@index([email])
+  @@index([status])
+  @@map("taas_inquiries")
+}

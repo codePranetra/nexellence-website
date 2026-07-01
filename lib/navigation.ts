@@ -42,5 +42,6 @@ export const MAIN_NAV: NavItem[] = [
   { label: "About Us", href: "/about", children: ABOUT_NAV },
   { label: "Services", href: "/services", children: SERVICES_NAV },
   { label: "Industries", href: "/industries", children: INDUSTRIES_NAV },
+  { label: "Custom Pricing", href: "/build-your-custom-pricing" },
   { label: "Blog", href: "/blog" },
 ];
